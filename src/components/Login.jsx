@@ -23,6 +23,7 @@ function Login() {
             [name]: value,
         }))
     }
+    
     const register = () => {
         if(form.fullName === '') {
             return alert("Please Enter your full Name.")
@@ -35,10 +36,12 @@ function Login() {
                 })
                 .then(() => {
                     dispatch(login({
-                        email: userAuth.user.email,
-                        uid: userAuth.user.uid,
-                        displayName: form.fullName,
-                        photoUrl: form.photoUrl
+                        payload : {
+                            email: userAuth.user.email,
+                            uid: userAuth.user.uid,
+                            displayName: form.fullName,
+                            photoUrl: form.photoUrl
+                        }
                     }))
                 })
             })
@@ -49,10 +52,12 @@ function Login() {
         auth.signInWithEmailAndPassword(form.email, form.password)
             .then(userAuth => {
                 dispatch(login({
-                    email: userAuth.user.email,
-                    uid: userAuth.user.uid,
-                    displayName: userAuth.user.displayName,
-                    photoUrl: userAuth.user.photoURL
+                    payload: {
+                        email: userAuth.user.email,
+                        uid: userAuth.user.uid,
+                        displayName: userAuth.user.displayName,
+                        photoUrl: userAuth.user.photoURL
+                    }
                 }))
             })
             .catch(error => alert(error.message));

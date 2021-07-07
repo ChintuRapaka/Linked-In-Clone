@@ -9,7 +9,7 @@ import Login from './components/Login';
 import {auth} from "./firebase";
 
 function App() {
-  const user = useSelector(selectUser)
+  const user = useSelector(selectUser);
   const dispatch = useDispatch();
   useEffect(() => {
     auth.onAuthStateChanged(userAuth => {
@@ -26,7 +26,7 @@ function App() {
         dispatch(logout());
       }
     })
-  })
+  }, [dispatch])
   return (
     <div className="app">
       <Header />

@@ -9,7 +9,7 @@ function HeaderOption({avatar, Icon, title, onClick}) {
     return (
         <div className="headerOption">
             {Icon && <Icon className="headerOption__icon"/>}
-            {avatar && <Avatar className="headerOption__icon" src={user?.photoUrl} onClick={onClick}>{user?.displayName[0]}</Avatar>}
+            {avatar && <Avatar className="headerOption__icon" src={user ? user.photoUrl : ""} onClick={onClick}> {user ? user.displayName[0] : "New"} </Avatar>}
             <h3 className="headerOption__title">{title}</h3>
         </div>
     )
